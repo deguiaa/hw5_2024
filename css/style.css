@@ -1,0 +1,151 @@
+/* Animate the logo using keyframes */
+@keyframes logo_move{
+    from {width: 25px; opacity: 0;}
+    to {width: 475px; opacity: 1;}
+}
+#logo{
+    animation: logo_move 5s;
+}
+
+/* Edit the body to use the poppins font, and have a background image and color */
+body{
+    font-family: "Poppins", serif;
+    background-image: url("../images/concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+
+/* Edit the header tag to flex display */
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* edit nav links to use flex display matching rest of site  */
+.nav_links{
+    display: flex;
+    flex-direction: column;
+
+}
+/* Add background color, border, paddind, and border top right and left corner rounding to headers within each card */
+.card > header{
+    background: #288088;
+    border: solid 2px #45ADAD;
+    padding: 20px 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* set initial card size to 450 px, and corrected card top right and top right corner radius issue */
+.card{
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    display:flex;
+    flex-direction: column;
+    /* width: 450px; */
+    width: 450px;
+    flex-basis: 0;
+  }
+
+/* set the link color to to be the same after links are visited */
+.nav_item a:visited{
+    color: blue;
+}
+/* format the pricing class to display items vertically, and make them centered both vertically and horizontally */
+.pricing{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* add a border, margin, and specified element widths for items in the gallery */
+.gallery img{
+    border: solid 2px #50C7C7;
+    width: 300px;
+    margin:10px;
+}
+/* style the gallery container using flex display, with items displayed in a row, wrapping enabled, and centered horizontally. */
+.gallery{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* set a media query for styling the site when the screen is wider than 900px */
+@media screen and (min-width: 900px) {
+    /* change header style to display items horizontally with content at edges of the page */
+    header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* Style site header to remain at the top of the page while scrolling */
+    body > header:first-of-type{
+        position: sticky;
+        width: 100%;
+        top: 0;
+    }
+    /* style the links in the navigation bar to be displayed horizontally, rather than vertically*/
+    .nav_links{
+        display: flex;
+        flex-direction: row;
+    }
+    /* change pricing class container to display pricing cards horizontally rather than vertically */
+    div.pricing{
+        flex-direction: row;
+    }
+
+    /* change pricing card width to 275px */
+    .card{
+        flex-basis: 275px;
+      }
+}
+
+/* media query that turns off logo animation when users prefers reduce motion */
+@media (prefers-reduced-motion) {
+    #logo{
+        animation: none;
+    }
+  }
+
+/* created a media query to customize styling when site is printed */
+@media print and (orientation: portrait) {
+    /* change defailt font to arial, and backup to helvetica, remove background image */
+    body{
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+    /* display nav links horizontally */
+    .nav_links{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    /* set navigation container to width to 100% of screen */
+    nav{
+        width:100%
+    }
+
+    header{
+        justify-content: space-around;
+    }
+    /* align pricing elements along bottom in a horizontal row */
+    .pricing{
+        flex-direction: row;
+        align-items: flex-end;
+    }
+    /* add border to card elements and give them a starting width of 325px */
+    .card{
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+    /* hide the gallery header and images  */
+    #gallery, .gallery{
+        display: none;
+    }
+    /* add thumbs up emoji in the second list element of every card */
+    .card li:nth-of-type(2)::after{
+        content: "\1F44D"
+    }
+}
